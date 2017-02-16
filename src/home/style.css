@@ -1,0 +1,13 @@
+.wrapper {
+    align-items: center;
+    margin-top: 120px;
+}
+
+.wrapper .title {
+    font-size: 48px;
+}
+
+.wrapper .logo {
+    width: 360px;
+    height: 82px;
+}
