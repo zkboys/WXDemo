@@ -1,5 +1,9 @@
 const modal = weex.requireModule('modal');
 export function toast({message, duration = 1}) { // duration 以秒为单位
+    if(arguments.length ===1 && typeof arguments[0] === 'string'){
+        message = arguments[0];
+        duration = 1;
+    }
     modal.toast({
         message,
         duration,

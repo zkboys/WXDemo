@@ -1,8 +1,12 @@
 <template>
     <div>
         <app-header :title="title">
-            <div slot="left" style="background-color: red;height:50px;" @click="handleMenuIconClick">
-                <text>menu 图标 </text>
+            <div slot="left" @click="handleMenuIconClick">
+                <div class="menu-icon">
+                    <div class="menu-icon-item"></div>
+                    <div class="menu-icon-item"></div>
+                    <div class="menu-icon-item"></div>
+                </div>
             </div>
             <div slot="right">
                 <slot name="right"></slot>
@@ -11,6 +15,20 @@
     </div>
 </template>
 <style scope>
+    .menu-icon{
+        width: 60px;
+        height: 50px;
+        padding-top: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .menu-icon-item{
+        border-style: solid;
+        border-width: 0px;
+        border-color: #666;
+        border-bottom-width: 2px;
+        margin-bottom: 5px;
+    }
 </style>
 <script>
     import AppHeader from './app-header.vue'

@@ -52,19 +52,21 @@ bus.$on('id-selected', function (id) {
 })
 
 ```
+
+## 如何实现热更新
+在app启动页（启动页需要使用原生实现？），请求服务器，获取所有的静态资源，并保存，通过请求到的静态资源启动app
+
+1. 构建时，生成一个assets-map文件（文件名：md5映射表），
+1. app启动时，携带assets-map内容发送请求
+1. 服务器根据assets-map内容判断是否需要跟新静态文件
+1. app下载所有新的assets文件之后，根据assets文件启动app
+
+1. 下载文件，保存到指定目录，android ios h5
+
 ## 问题
 
 1. font-icon 是否可以使用？
-1. 如何使用本地图片？
+1. 如何使用本地图片？需要自己实现ImageAdapter
 
-1. 图片显示问题：
-
-width height 直接用style写，可以显示，如果放到class中写，图片不显示
-```
-<img class="logo" style="width:560px;height:560px;" src="https://img.alicdn.com/tps/TB1z.55OFXXXXcLXXXXXXXXXXXX-560-560.jpg"></img>
-
-```
-
-1. 不支持 {...abc,}这种写法？目前使用Object.assign替代的
 
 1. android 中v-show 不可用？

@@ -1,9 +1,9 @@
 import {mapActions, mapState} from 'vuex';
-import AppHeader from '../../components/menu-header.vue'
+import MenuHeader from '../../components/menu-header.vue'
 const modal = weex.requireModule('modal');
 
 export default {
-    components: {AppHeader},
+    components: {MenuHeader},
     data () {
         return {
             showLoading: 'show',

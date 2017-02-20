@@ -65,7 +65,7 @@ function getBaseConfig() {
                     test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                     loader: 'url',
                     query: {
-                        limit: 10000,
+                        limit: 1,
                         name: '[name].[ext]'
                     }
                 },

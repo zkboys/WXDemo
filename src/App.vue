@@ -10,7 +10,7 @@
   }
 </style>
 <script>
-  import Drawer from './components/drawer.vue';
+  import Drawer from './components/drawer/drawer.vue';
   export default {
     components: {Drawer},
     methods: {

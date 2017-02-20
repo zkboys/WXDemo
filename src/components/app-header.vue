@@ -47,7 +47,6 @@
   .left{
     position: absolute;
     left: 0;
-    padding-left: 20px;
   }
   .center {
     flex: 1;
