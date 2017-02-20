@@ -8,7 +8,7 @@ import mixins from './mixins'
 
 // sync the router with the vuex store.
 // this registers `store.state.route`
-sync(store, router)
+sync(store, router);
 
 // register global utility filters.
 Object.keys(filters).forEach(key => {
@@ -16,11 +16,11 @@ Object.keys(filters).forEach(key => {
 })
 
 // register global mixins.
-Vue.mixin(mixins)
+Vue.mixin(mixins);
 
 // create the app instance.
 // here we inject the router and store to all child components,
 // making them available everywhere as `this.$router` and `this.$store`.
 new Vue(Vue.util.extend({el: '#root', router, store}, App))
 
-router.push('/')
+router.push('/');

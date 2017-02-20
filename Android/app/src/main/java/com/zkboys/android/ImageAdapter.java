@@ -1,9 +1,12 @@
 package com.zkboys.android;
 
+import android.content.Context;
 import android.net.Uri;
 import android.text.TextUtils;
 import android.widget.ImageView;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 import com.taobao.weex.WXEnvironment;
@@ -13,9 +16,15 @@ import com.taobao.weex.common.WXImageStrategy;
 import com.taobao.weex.dom.WXImageQuality;
 
 public class ImageAdapter implements IWXImgLoaderAdapter {
+    private Context context;
+
+    public ImageAdapter(Context context) {
+        this.context = context;
+    }
 
     @Override
     public void setImage(final String url, final ImageView view, WXImageQuality quality, final WXImageStrategy strategy) {
+        final Context context = this.context;
         WXSDKManager.getInstance().postOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -29,6 +38,19 @@ public class ImageAdapter implements IWXImgLoaderAdapter {
                 String temp = url;
                 if (url.startsWith("//")) {
                     temp = "https:" + url;
+                }
+                // 加载本地图片 assets://8888.jpg
+                if (!temp.startsWith("http")) {
+                    if (temp.startsWith("/./")) {
+                        temp = temp.replace("/./", "");
+                    }
+
+                    ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(context)
+                            .build();
+                    ImageLoader.getInstance().init(config);
+                    ImageLoader.getInstance().displayImage("assets://" + temp,
+                            view);
+                    return;
                 }
                 if (view.getLayoutParams().width <= 0 || view.getLayoutParams().height <= 0) {
                     return;

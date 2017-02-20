@@ -1,70 +1,65 @@
 <template>
-  <div class="header">
-    <div class="logo" @click="jump('/')">
-      <image class="image" src="https://news.ycombinator.com/favicon.ico"></image>
+    <div class="header">
+        <div class="left">
+            <slot name="left">
+                <text class="left-text">返回</text>
+            </slot>
+        </div>
+        <div class="center">
+            <text class="center-text">{{title}}</text>
+        </div>
+        <div class="right">
+            <slot name="right">
+                <text class="right-text">右侧</text>
+            </slot>
+        </div>
     </div>
-    <div class="nav">
-      <div class="link" @click="jump('/top')">
-        <text class="title">Top</text>
-      </div>
-      <div class="link" @click="jump('/new')">
-        <text class="title">New</text>
-      </div>
-      <div class="link" @click="jump('/show')">
-        <text class="title">Show</text>
-      </div>
-      <div class="link" @click="jump('/ask')">
-        <text class="title">Ask</text>
-      </div>
-      <div class="link" @click="jump('/job')">
-        <text class="title">Job</text>
-      </div>
-    </div>
-  </div>
 </template>
 
+<script>
+    export default {
+    props: {
+      title: {
+        type: String,
+        default: ''
+      }
+    },
+    methods: {
+      back() {
+        this.$router.back()
+      }
+    },
+  }
+</script>
+
 <style scoped>
-  .header {
-    position: relative;
-    height: 120px;
-    margin-bottom: 3px;
+  .left, .header, .right{
+    height: 50px;
     border-bottom-width: 2px;
     border-bottom-style: solid;
-    border-bottom-color: #DDDDDD;
-    background-color: #FF6600;
+    border-bottom-color: #ddd;
+    background-color: #f5f5f5;
+    justify-content: center;
   }
-  .logo {
-    position: relative;
-    width: 50px;
-    height: 50px;
-    top: 35px;
-    left: 35px;
-    border-width: 3px;
-    border-style: solid;
-    border-color: #FFFFFF;
-  }
-  .image {
-    width: 44px;
-    height: 44px;
-  }
-  .nav {
-    display: flex;
-    position: absolute;
-    left: 120px;
-    top: 35px;
+  .header {
     flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-items: center;
   }
-  .link {
-    padding-left: 15px;
-    padding-right: 15px;
+  .left{
+    position: absolute;
+    left: 0;
+    padding-left: 20px;
   }
-  .title {
-    font-family: Verdana, Geneva, sans-serif;
-    font-size: 32px;
-    line-height: 44px;
-    color: #FFFFFF;
+  .center {
+    flex: 1;
+    justify-content: center;
+    align-items:center;
+  }
+  .right{
+    position: absolute;
+    right: 0;
+    padding-right: 20px;
+  }
+  .left-text,.center-text,.right-text{
+    font-size: 18px;
   }
 </style>

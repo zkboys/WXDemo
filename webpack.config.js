@@ -23,6 +23,7 @@ function getBaseConfig() {
         },
         output: {
             path: 'dist',
+            publicPath: '/dist/'
         },
         module: {
             // // You can use ESLint now!
@@ -63,6 +64,10 @@ function getBaseConfig() {
                 {
                     test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                     loader: 'url',
+                    query: {
+                        limit: 10000,
+                        name: '[name].[ext]'
+                    }
                 },
             ]
         },

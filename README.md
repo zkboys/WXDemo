@@ -40,6 +40,18 @@ npm run debug
 
 You can config more babel, ESLint and PostCSS plugins in `webpack.config.js`.
 
+## 全局事件系统
+mixins/index.js中定义的全局事件对象（其实是Vue实例）
+```
+// 触发组件 A 中的事件
+bus.$emit('id-selected', 1)
+
+// 在组件 B 创建的钩子中监听事件
+bus.$on('id-selected', function (id) {
+  // ...
+})
+
+```
 ## 问题
 
 1. font-icon 是否可以使用？
@@ -54,3 +66,5 @@ width height 直接用style写，可以显示，如果放到class中写，图片
 ```
 
 1. 不支持 {...abc,}这种写法？目前使用Object.assign替代的
+
+1. android 中v-show 不可用？
