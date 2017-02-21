@@ -9,10 +9,8 @@ import iconActiveDingdan from './icon-dingdan-active.png';
 import iconZhuye from './icon-zhuye.png';
 import iconActiveZhuye from './icon-zhuye-active.png';
 
-
 const drawerDuration = 200;
 const coverDuration = 300;
-
 
 export default{
     data(){
@@ -48,6 +46,9 @@ export default{
             // TODO 切换时，有点卡
             this.activeMenuId = menuId;
             this.hideDrawer();
+            if ('diancan' === menuId) {
+                this.jump('/table');
+            }
         },
         hideDrawer(){
             const cover = this.$refs.cover;
@@ -106,7 +107,6 @@ export default{
         },
     },
     mounted(){
-        this.showDrawer();
         this.eventBus.$on('show-drawer', this.showDrawer);
         this.eventBus.$on('hide-drawer', this.hideDrawer);
     }
